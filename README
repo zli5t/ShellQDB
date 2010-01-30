@@ -1,0 +1,19 @@
+ShellQDB is, as the name says, a quote database (for IRC channels and the like)
+coded entirely in shell for flexibility and extensibility. Its currently under
+active development. It started when the folks at #pctyd wanted a qdb and lietk12
+and I both despised rash and other such systems. So we coded this! Enjoy!
+
+adding quotes:
+echo "My quote here!" | escq | addq
+
+showing quotes
+grep/sed for your quote here | fmtq
+
+changing quotes
+. lockq
+awk -F:: 'if blah{do blah;print;}' <quotes >quotes.temp
+mv quotes.temp quotes
+. ulockq
+
+this readme will be changed as development progresses. Remember to comment
+what your scary sed strings mean! or at least what your programs do. :-)
