@@ -1,15 +1,24 @@
 ShellQDB is, as the name says, a quote database (for IRC channels and the like)
-coded entirely in shell for flexibility and extensibility. Its currently under
+coded entirely in shell scripts for flexibility and extensibility. Its currently under
 active development. It started when the folks at #pctyd wanted a qdb and lietk12
 and I both despised rash and other such systems. So we coded this! Enjoy!
+A similar project with similar methods can be found at http://scalar.cluenet.org/~fastlizard4/quotes.php
 
-adding quotes:
+
+SAMPLE USAGE
+adding a quote
 echo "My quote here!" | escq | addq
 
-showing quotes
+searching for a quote with a specific keyword/regex
 grep/sed for your quote here | fmtq
 
-changing quotes
+retreiving a specified quote (in this case, quote with id of 42)
+egrep '^42::' | fmtq
+
+retreiving a specified range of quotes (in this case, from quote 2 to quote 5)
+sed -n '2,5p' | fmtq
+
+editing quotes
 . lockq
 awk -F:: 'if blah{do blah;print;}' <quotes >quotes.temp
 mv quotes.temp quotes
@@ -17,3 +26,27 @@ mv quotes.temp quotes
 
 this readme will be changed as development progresses. Remember to comment
 what your scary sed strings mean! or at least what your programs do. :-)
+
+
+
+NOTES ON FILES
+escq (escape quote): sanitize the input and convert it into one-line form.
+unescq (unescape quote): convert the input into its literal form, with multi-lines and such.
+
+addq (add quote): add the input to the quote file.
+
+lockq (lock quote) and unlockq (unlock quote): provide a layer of protection for any operation dealing with the quote file, to ensure that no data is lost or overwritten.
+
+fmtq (format quote): sanitize the input into an html-safe form (e.g. escaping angle brackets, ampersands, etc.).
+
+setqf (set quote flag): set the third flag in the quote file.  This flag can have any value, but it is meant for 3 possible values:
+u (unapproved): quotes that have just been submitted; they will not be visible anywhere until an admin changes the flag to a.  Admins can essentially approve a quote (with a) or unapprove it (with h).
+a (approved): normal quotes; they will be shown.
+h (hidden): quotes that have been deleted; they will not be visible anywhere.  Deleted quotes will always exist, so every quote ever will have a unique index number.
+
+setqscore (set quote score): modify a quote's score/rating/quality/etc.  Accepts 3 arguments:
+up: increment the score by one.
+down: decrement the score by one.
+(any numerical argument): set the score to the value provided.
+
+test: nothing to see here, move along.  It's not a coincidence that the contents of this are in quote #5.  *cough cat test | escq | addq cough*
