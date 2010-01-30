@@ -1,4 +1,11 @@
 . lockq
-sed -ri 's/^('$1')::[^:]+/\1::'$2'/' quotes
+if [ $2 = up ]; then
+	awk -F:: 'BEGIN{OFS="::";}{if($1=='$1')$2++;print;}' <quotes >quotes.temp
+elif [ $2 = down ]; then
+	awk -F:: 'BEGIN{OFS="::";}{if($1=='$1')$2--;print;}' <quotes >quotes.temp
+else
+	awk -F:: 'BEGIN{OFS="::";}{if($1=='$1')$2='$2';print;}' <quotes >quotes.temp
+fi
+mv quotes.temp quotes
 . ulockq
 
