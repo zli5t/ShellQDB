@@ -1,0 +1,4 @@
+. lockq
+sed -ri 's/^('$1')::[^:]+/\1::'$2'/' quotes
+. ulockq
+

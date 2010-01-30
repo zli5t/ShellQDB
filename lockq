@@ -1,0 +1,5 @@
+#!/bin/sh
+while [ -e quotes.lock ]
+do env sleep .05s
+done
+touch quotes.lock
