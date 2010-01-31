@@ -15,7 +15,10 @@
 # Example(s):
 # setqf 5 a
 
+. config
 . lockq
-sed -r -i '/^'$1'::/s/(([0-9]+::){2})./\1'$2'/' quotes
+
+sed -r -i '/^'$1'::/s/(([0-9]+::){2})./\1'$2'/' $qfile
+
 . ulockq
 

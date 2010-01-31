@@ -7,4 +7,6 @@
 # Example(s)
 # To be completed.
 
-rm quotes.lock
+. config
+
+rm $qlockfile

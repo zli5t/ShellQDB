@@ -21,4 +21,6 @@
 #   <lietk12> foo
 #   <skr> bar
 
-echo "`tail -1 quotes | awk -F:: '{print $1+1}'`::0::t::`cat`" >>quotes
+. config
+
+echo "`tail -1 quotes | awk -F:: '{print $1+1}'`::0::t::`cat`" >>$qfile

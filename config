@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# NOTES
+# config (configuration variables): This is not a shell script.  This defines
+# some variables and paths and names (in case you want to change them).
+#
+# USAGE
+# Why are you even reading this section?
+# Example(s)
+# nano config
+# vim config
+# emacs config
+# gedit config
+
+# qfile is the path to the file that stores all the quotes.
+# Default: ./quotes
+qfile=./quotes
+
+# qlockfile is the path to the file that is used by lockq and ulockq for
+# avoiding editing collisions.
+# Default: ./quotes.lock
+qlockfile=./quotes.lock
+
+# qtempfile is the path to the file that is made for queueing changes to qfile,
+# or something.
+# Default: ./quotes.temp
+qtempfile=./quotes.temp

@@ -7,7 +7,9 @@
 # Example(s)
 # To be completed.
 
-while [ -e quotes.lock ]
+. config
+
+while [ -e $qlockfile ]
 do env sleep .05s
 done
-touch quotes.lock
+touch $qlockfile

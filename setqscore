@@ -14,14 +14,17 @@
 # setqscore 2 down
 # setqscore 4 9001
 
+. config
 . lockq
+
 if [ $2 = up ]; then
-	awk -F:: 'BEGIN{OFS="::";}{if($1=='$1')$2++;print;}' <quotes >quotes.temp
+	awk -F:: 'BEGIN{OFS="::";}{if($1=='$1')$2++;print;}' <$qfile >$qtempfile
 elif [ $2 = down ]; then
-	awk -F:: 'BEGIN{OFS="::";}{if($1=='$1')$2--;print;}' <quotes >quotes.temp
+	awk -F:: 'BEGIN{OFS="::";}{if($1=='$1')$2--;print;}' <$qfile >$qtempfile
 else
-	awk -F:: 'BEGIN{OFS="::";}{if($1=='$1')$2='$2';print;}' <quotes >quotes.temp
+	awk -F:: 'BEGIN{OFS="::";}{if($1=='$1')$2='$2';print;}' <$qfile >$qtempfile
 fi
-mv quotes.temp quotes
+mv $qtempfile $qfile
+
 . ulockq
 
