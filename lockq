@@ -1,4 +1,12 @@
 #!/bin/sh
+
+# Notes
+# To be completed.
+# Usage
+# . lockq
+# Example(s)
+# To be completed.
+
 while [ -e quotes.lock ]
 do env sleep .05s
 done

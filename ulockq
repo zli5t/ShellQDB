@@ -1,1 +1,10 @@
+#!/bin/sh
+
+# Notes
+# To be completed.
+# Usage
+# . lockq
+# Example(s)
+# To be completed.
+
 rm quotes.lock

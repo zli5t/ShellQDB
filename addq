@@ -1,2 +1,24 @@
 #!/bin/sh
+
+# NOTES
+# addq (add quote): add the input to the quote file.  Accepts one argument (the
+# body of the quote in sanitized form), but you really should be using this with
+# pipes so you don't have to sanitize it yourself (see USAGE->Example(s)).
+#
+# USAGE
+# addq [sanitized form of quote]
+# Example(s):
+# addq <lietk12> foo\n<skr> bar
+#  Comment: this usage is not recommended, but merely supplied for completeness.
+# echo "<lietk12> foo\n<skr> bar" | addq
+#  Comment: again, this usage is not recommended, but supplied.
+# echo "<lietk12> foo
+# <skr> bar" | escq | addq
+#  Comment: this is better because it uses the sanitizer.  Make sure understand
+#  that the two lines are part of one command.
+# cat thisFileContainsOneQuote | escq | addq
+#  Comment: The command "cat thisFileContainsOneQuote" returns:
+#   <lietk12> foo
+#   <skr> bar
+
 echo "`tail -1 quotes | awk -F:: '{print $1+1}'`::0::t::`cat`" >>quotes

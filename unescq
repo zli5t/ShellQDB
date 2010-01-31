@@ -1,4 +1,30 @@
 #!/bin/sed -f
+
+# NOTES
+# unescq (unescape quote): convert previously sanitized input into literal form,
+# then output it to standard output.  Accepts one argument (the sanitized body
+# of the quote), but you should use this with pipes (see USAGE->Example(s)).
+# Meant to be used where the output is piped from retrieval of some part of the
+# contents of the quotes file (see USAGE of addq)
+#
+# USAGE
+# unescq [sanitized form of quote]
+# Example(s):
+# echo "<lietk12> so this guy says "foo\\nbar"\n<skr> foobar" | escq
+#  Comment: The two above lines are one command.  The output of this command is:
+#   <lietk12> so this guy says "foo\nbar"
+#   <skr> foobar
+#  Obviously, this should be piped into addq (see the USAGE of addq)
+# cat thisFileContainsOneQuote | escq
+#  Comment: the output of this command is:
+#   <lietk12> so this guy says "foo\\nbar"\n<skr> foobar
+#  The command "cat thisFileContainsOneQuote" returns:
+#   <lietk12> so this guy says "foo\nbar"
+#   <skr> foobar
+
+# Replace "\\n" with "\n"
 s_\\n_\n_g
+# Replace "\\:" with ":"
 s_\\:_:_g
+# Replace "\\\\" with "\\"
 s_\\\\_\\_g
