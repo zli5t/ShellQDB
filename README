@@ -16,16 +16,6 @@ SAMPLE USAGE
 searching for a quote with a specific keyword/regex
 grep/sed for your quote here | outq/html
 
-retreiving a specified quote (in this case, quote with id of 42)
-egrep '^42::' | outq/html
-
-retreiving a specified range of quotes (in this case, from quote 2 to quote 5)
-sed -n '2,5p' | outq/html
-or
-sed -n '/^2::/,/^5::/p' | outq/html 
-The latter doesn't depend on line number being equal to quote id, so it's more
-forwards-compatible to changes in the program.
-
 editing quotes
 . lockq
 awk -F:: 'if blah{do blah;print;}' <quotes >quotes.temp

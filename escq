@@ -9,8 +9,8 @@
 # USAGE
 # escq [literal form of quote]
 # Example(s):
-# echo "<lietk12> so this guy says "foo\nbar"
-# <skr> foobar" | escq
+# echo '<lietk12> so this guy says "foo\nbar"
+# <skr> foobar' | escq
 #  Comment: The two above lines are one command.  The output of this command is:
 #   <lietk12> so this guy says "foo\\nbar"\n<skr> foobar
 #  Obviously, this should be piped into addq (see the USAGE of addq)
