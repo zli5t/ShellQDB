@@ -1,6 +1,12 @@
-#!/usr/bin/perl
-use HTML::Entities;
-
-while(<>){
-	print encode_entities($_);
+#!/bin/sh
+awk -F:: '
+$3=="t"{
+print "<div class=\"quote\">"
+print "<span class=\"qid\">"$1"</span>"
+print "<span class=\"qscore\">"$2"</span>"
+print "<div class=\"qcontent\">"
+system ("echo '\''"$NF"'\'' | ../unescq  | perl -p -MHTML::Entities -e '\''encode_entities($_)'\''")
+print "</div>"
+print "</div>"
 }
+'
