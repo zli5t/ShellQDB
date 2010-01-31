@@ -5,7 +5,7 @@ print "<div class=\"quote\">"
 print "<span class=\"qid\">"$1"</span>"
 print "<span class=\"qscore\">"$2"</span>"
 print "<div class=\"qcontent\">"
-print $NF
+system ("echo '\''"$NF"'\'' | ./unescq  | outq/html")
 print "</div>"
 print "</div>"
 }

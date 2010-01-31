@@ -1,0 +1,6 @@
+#!/usr/bin/perl
+use HTML::Entities;
+
+while(<>){
+	print encode_entities($_);
+}
