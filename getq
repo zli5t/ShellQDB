@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# NOTES
+# getq (get quote): return a specified range of quotes, with metadata
+# Accepts at least one argument:
+#  (any numerical argument): id of first quote in range, inclusive
+#  (any numerical argument): id of last quote in range, inclusive
+#
+# USAGE
+# getq [min quote id] [max quote id]
+# getq [quote id]
+# Example(s):
+# getq 2 5
+#  Comment: this retrieves quotes 2, 3, 4, and 5
+# getq 4
+#  Comment: this retrieves quote 4
+# getq 4 4
+#  Comment: this retrievew quote 4
+
+. config
+. lockq
+
+if [ "$2" = "" ]; then
+	# Check if there is only one argument
+	# Return a single quote specified by the first argument
+	sed -n /^$1::/p <$qfile;
+elif [ $1 = $2 ]; then
+	# Return a single quote specified by the first argument
+	sed -n /^$1::/p <$qfile;
+elif [ $2 > $1 ]; then
+	# Return a range of quotes
+	sed -n /^$1::/,/^$2::/p <$qfile;
+else
+	echo "Error.";
+fi
+
+. ulockq
