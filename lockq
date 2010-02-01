@@ -1,11 +1,15 @@
 #!/bin/sh
 
-# Notes
-# To be completed.
+# This waits until the lock file is gone, and then creates its own.
+# Basically, including this puts a lock on the file, ensuring sequential
+# access. 
+# 
 # Usage
 # . lockq
-# Example(s)
-# To be completed.
+# do shit here to quotes
+# . ulockq # removes the lock
+#
+# see setqf for an example.
 
 . config
 

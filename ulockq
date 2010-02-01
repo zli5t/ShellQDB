@@ -1,12 +1,6 @@
 #!/bin/sh
 
-# Notes
-# To be completed.
-# Usage
-# . lockq
-# Example(s)
-# To be completed.
-
-. config
+# Removes the lock file; unlocks the quotes file.
+# See lockq for documentation, usage.
 
 rm $qlockfile
