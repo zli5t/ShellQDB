@@ -22,5 +22,7 @@
 #   <skr> bar
 
 . ./config
+. ./lockq
+sed -r 's/(.*)/'`tail -1 quotes | awk -F:: '{print $1+1}'`'::0::t::\1/' >>$qfile
 
-echo "`tail -1 quotes | awk -F:: '{print $1+1}'`::0::t::`cat`" >>$qfile
+. ./ulockq
