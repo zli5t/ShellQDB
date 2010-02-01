@@ -28,7 +28,7 @@ What are our development principles?
 -   Bash tools are fast, lightweight, and excellent in handling text (sed, grep,
     and awk come to mind).
 -   The [Unix Philosophy](http://www.faqs.org/docs/artu/ch01s06.html) enables
-    efficiency, simplicity, and configurability, which are key goals.
+    efficiency, simplicity, and flexibility, which are key goals.
 
 
 Contributing

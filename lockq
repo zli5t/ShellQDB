@@ -1,8 +1,9 @@
 #!/bin/sh
 
 # NOTES
-# lockq (lock quote): This waits until the lock file is gone, and then creates
-# its own.  Including this puts a lock on the file, ensuring sequential access.
+# lockq (lock quote): This waits until any preexisting lock file is gone, and
+# then creates its own.  Including this in a script puts a lock on the quotes
+# file, ensuring sequential (and not simultaneous) writing to quotesfile data.
 # How does it queue tasks?  Operation (Op) A is called, and a lockfile is made.
 # Op B is called before Op A finishes.  Op A finishes and removes its lockfile
 # by calling on the ulockq script.  Now Op B can make its lockfile and proceed
