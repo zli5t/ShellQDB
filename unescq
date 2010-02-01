@@ -1,4 +1,4 @@
-#!/bin/sed -f
+#!/bin/sed -rf
 
 # NOTES
 # unescq (unescape quote): convert previously sanitized input into literal form,
@@ -24,7 +24,7 @@
 # getq 5 | unescq
 
 # Replace "\\n" with "\n"
-s_\\n_\n_g
+s_[^\]\\n_\n_g
 # Replace "\\:" with ":"
 s_\\:_:_g
 # Replace "\\\\" with "\\"
