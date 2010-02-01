@@ -26,7 +26,7 @@ if [ "$2" = "" ]; then
 elif [ $1 = $2 ]; then
 	# Return a single quote specified by the first argument
 	sed -n /^$1::/p <$qfile;
-elif [ $2 > $1 ]; then
+elif [ $2 -gt $1 ]; then
 	# Return a range of quotes
 	sed -n /^$1::/,/^$2::/p <$qfile;
 else
