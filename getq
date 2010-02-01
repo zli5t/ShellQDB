@@ -12,6 +12,8 @@
 # Example(s):
 # getq 2 5
 #  Comment: this retrieves quotes 2, 3, 4, and 5
+# getq 5 2
+#  Comment: the order of min/max does not matter
 # getq 4
 #  Comment: this retrieves quote 4
 # getq 4 4
@@ -23,13 +25,14 @@ if [ "$2" = "" ]; then
 	# Check if there is only one argument
 	# Return a single quote specified by the first argument
 	sed -n /^$1::/p <$qfile;
-elif [ $1 = $2 ]; then
+elif [ "$1" = "$2" ]; then
 	# Return a single quote specified by the first argument
 	sed -n /^$1::/p <$qfile;
-elif [ $2 -gt $1 ]; then
+elif [ "$2" -gt "$1" ]; then
 	# Return a range of quotes
 	sed -n /^$1::/,/^$2::/p <$qfile;
 else
-	echo "Error.";
+	# Return a range of quotes
+	sed -n /^$2::/,/^$1::/p <$qfile;
 fi
 
