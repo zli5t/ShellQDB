@@ -21,9 +21,9 @@
 #   <lietk12> so this guy says "foo\nbar"
 #   <skr> foobar
 
-# Replace "\\" with "\\\\"
+# Replace '\\' with '\\\\'
 s_\\_\\\\_g
-# Replace ":" with "\\:"
+# Replace ':' with '\\:'
 s_:_\\:_g
-# This does something.
-:a;N;$!ba;s_\\_\\\\_g;s_:_\\:_g;s_\n_\\n_g
+# Replace newlines with '\n'
+:a;N;$!ba;s_\n_\\n_g
