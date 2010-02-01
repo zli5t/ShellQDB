@@ -18,9 +18,7 @@
 . ./config
 . ./lockq
 
-cp $qfile $qtempfile
-sed -r -i '/^'$1'::/s/(([0-9]+::){2})./\1'$2'/' $qtempfile
-mv $qtempfile $qfile
+sed -r -i '/^'$1'::/s/(([0-9]+::){2})./\1'$2'/' $qfile
 
 . ./ulockq
 
