@@ -13,6 +13,7 @@ coded in shell scripts for flexibility and extensibility (however, the frontend
 is also uses html, php, and perl). It's currently underactive development. It
 started when the folks at #pctyd on irc.foonetic.net wanted a qdb and lietk12
 and lietk12 both despised rash and other such systems. So we coded this! Enjoy!
+
 A similar project using a similar method is at:
 http://scalar.cluenet.org/~fastlizard4/quotes.php
 (Except, use ours because we're more awesome, of course! :-P)
