@@ -11,8 +11,6 @@
 #
 # see setqf for an example.
 
-. config
-
 while [ -e $qlockfile ]
 do env sleep .05s
 done

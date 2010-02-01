@@ -17,8 +17,7 @@
 # getq 4 4
 #  Comment: this retrievew quote 4
 
-. config
-. lockq
+. ./config
 
 if [ "$2" = "" ]; then
 	# Check if there is only one argument
@@ -34,4 +33,3 @@ else
 	echo "Error.";
 fi
 
-. ulockq
