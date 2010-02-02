@@ -1,6 +1,6 @@
 #!/bin/sh
 awk -F:: '
-$3=="t"{
+$3=="a"{
 print "<div class=\"quote\">"
 print "<span class=\"qid\">"$1"</span>"
 print "<span class=\"qscore\">"$2"</span>"
