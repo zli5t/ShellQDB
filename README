@@ -35,7 +35,8 @@ Contributing
 --------------------------------------------------------------------------------
 
 Feel free to help out in writing ShellQDB!  You can write code, test it out,
-request features, report bugs, or help with documentation.  More details soon.
+request features, report bugs, or help with documentation.  The best way to get
+started is to join us on our irc channel: #shellQDB at irc.foonetic.net .
 
 
 Licensing
