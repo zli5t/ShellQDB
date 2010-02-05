@@ -17,22 +17,36 @@
 # getq 4
 #  Comment: this retrieves quote 4
 # getq 4 4
-#  Comment: this retrievew quote 4
+#  Comment: this retrieves quote 4
+# getq
+#  Comment: this retrieves all quotes
 
 . ./config
 
-if [ "$2" = "" ]; then
-	# Check if there is only one argument
-	# Return a single quote specified by the first argument
-	sed -n /^$1::/p <$qfile;
-elif [ "$1" = "$2" ]; then
-	# Return a single quote specified by the first argument
-	sed -n /^$1::/p <$qfile;
-elif [ "$2" -gt "$1" ]; then
-	# Return a range of quotes
-	sed -n /^$1::/,/^$2::/p <$qfile;
-else
-	# Return a range of quotes
-	sed -n /^$2::/,/^$1::/p <$qfile;
-fi
-
+# Check how many command-line arguments are given
+case $# in
+	0)
+		# Return all contents of the quotes file
+		sed -n /^::/p <$qfile;
+		;;
+	1)
+		# Return the quote specified by the argument
+		sed -n /^$1::/p <$qfile;
+		;;
+	2)
+		# Return the range of quotes specified by the min and max, inclusive
+		if [ $1 = $2 ]; then
+			# Return the quote specified by the two arguments (which are equal)
+			sed -n /^$1::/p <$qfile;
+		elif [ $1 -gt $2 ]; then
+			# If the first argument is the larger of the two arguments, use it as a max
+			sed -n /^$2::/,/^$1::/p <$qfile;
+		else
+			# If the second argument is the larger of the two arguments, use it as a max
+			sed -n /^$1::/,/^$2::/p <$qfile;
+		fi
+		;;
+	*)
+		echo "Error: Invalid quote range specification.";
+		;;
+esac
