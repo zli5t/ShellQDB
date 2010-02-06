@@ -1,0 +1,25 @@
+#!/usr/bin/php5 -q
+
+<?php
+// The hostname of your database, e.g. "delta.cluenet.org"
+$dbhostname = "foo";
+// The username of your account
+$dbusername = "bar";
+// The password of your account
+$dbpassword = "xyzzy";
+// The name of the database where your quotes table is
+$dbname = "bazz";
+
+// Make a MySQL Connection
+mysql_connect($dbhostname, $dbusername, $dbpassword) or die(mysql_error());
+mysql_select_db($dbname) or die(mysql_error());
+
+$query = "SELECT * FROM qdbs_quotes";
+
+$result = mysql_query($query) or die(mysql_error());
+
+while($row = mysql_fetch_array($result)){
+        echo $row['quote'];
+        echo "\n\n";
+}
+?>
