@@ -6,3 +6,6 @@
 #
 # USAGE
 # rqms
+
+Also, the current pipeline is as follows:
+rqms | stripcrlf | unescqdbs > quotes
