@@ -5,3 +5,6 @@
 #
 # USAGE
 # qdbs
+
+Also, the current pipeline is as follows:
+qdbs | stripcrlf | unescqdbs > quotes

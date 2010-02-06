@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# NOTES
+# stripcrlf (strip cr lf): convert dos-type newlines to unix-type newlines.
+# Use it in a pipeline, or something.
+#
+# USAGE
+# stripcrlf [file]
+# Example(s):
+# stripcrlf file
+
+tr -d '\r'
