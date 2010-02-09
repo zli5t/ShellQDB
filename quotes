@@ -3,6 +3,8 @@
 3::2::u::asdhfb
 4::1::a::test
 5::10::u::Dont'cha think that he's weird?\nYeah, i do\: what about you?\nLets try to escape a colon! LOL \\
-6::0::u::<html>
-7::0::h::lol
+6::1::u::<html>
+7::42::h::lol
 8::0::a::LOLOLOL
+9::0::u::<br /> This\:\:is a separator.
+10::0::u::<Colin> Foobar

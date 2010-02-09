@@ -2,7 +2,7 @@
 
 # NOTES
 # unescqdbs (unescape quote): convert the QdbS sanitized quotes (from a QdbS
-# type database, then output it to standard output.  Accepts one argument (the
+# type database), then output it to standard output.  Accepts one argument (the
 # sanitized body of the quote), but you should use this with pipes
 # (see USAGE->Example(s)).
 # Meant to be used where the output is piped from retrieval of some part of the

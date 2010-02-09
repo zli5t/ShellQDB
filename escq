@@ -25,5 +25,5 @@
 s_\\_\\\\_g
 # Replace ':' with '\\:'
 s_:_\\:_g
-# Replace newlines with '\n'
+# Replace newlines with '\n'; the garble up front removes newlines
 :a;N;$!ba;s_\n_\\n_g

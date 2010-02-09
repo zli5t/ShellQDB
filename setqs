@@ -18,11 +18,11 @@
 . ./lockq
 
 if [ $2 = up ]; then
-	awk -F:: 'BEGIN{OFS="::";}{if($1=='$1')$2++;print;}' <$qfile >$qtempfile
+	awk 'BEGIN{FS="::"; OFS="::";}{if($1=='$1')$2++;print;}' <$qfile >$qtempfile
 elif [ $2 = down ]; then
-	awk -F:: 'BEGIN{OFS="::";}{if($1=='$1')$2--;print;}' <$qfile >$qtempfile
+	awk 'BEGIN{FS="::"; OFS="::";}{if($1=='$1')$2--;print;}' <$qfile >$qtempfile
 else
-	awk -F:: 'BEGIN{OFS="::";}{if($1=='$1')$2='$2';print;}' <$qfile >$qtempfile
+	awk 'BEGIN{FS="::"; OFS="::";}{if($1=='$1')$2='$2';print;}' <$qfile >$qtempfile
 fi
 mv $qtempfile $qfile
 
