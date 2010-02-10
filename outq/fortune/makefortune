@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# NOTES
+# makefortune (set quote flag): a script to automatically make a fortune based
+# on a range of quotes.
+# Accepts at least two arguments:
+#  (fortune file name): name of the fortune file to be generated
+#  (any numerical argument): id of first quote in range, inclusive
+#  (any numerical argument): id of last quote in range, inclusive
+#
+# USAGE
+# makefortune [fortune file name] [min quote id] [max quote id]
+# makefortune [fortune file name] [quote id]
+# For quote id range specifications, see the documentation to getq.
+# Example(s):
+# makefortune ircquotes 2 5
+#  Comment: puts quotes 2, 3, 4, and 5 into a fortune file called "ircquotes"
+
+
+getq $2 $3 | outq/fortune/fortune | unescq > outq/fortune/${1}
+
+strfile outq/fortune/${1} outq/fortune/${1}.dat
+
+echo "Please move outq/fortune/${1} and outq/fortune/${1}.dat into /usr/share/games/fortunes/"
