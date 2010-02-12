@@ -1,0 +1,3 @@
+#!/bin/sh
+. ./config
+awk -F:: '$2 > 0 {print;}' <$qfile | utils/randl
