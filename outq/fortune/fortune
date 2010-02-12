@@ -1,19 +1,18 @@
-#!/usr/bin/awk -f
+#!/usr/bin/awk -F:: -f
 
 # NOTES
 # fortune: convert all quotes from input to fortune format.  Meant to be used
 # with pipes.
 # 
-# Accepts one argument: the input to be converted
+# Accepts no arguments.
 #
 # USAGE
-# fortune [quotes to be converted]
+# echo 'quotes to be converted' | outq/fortune/fortune
 # Example(s):
-# fortune '10::0::u::<Colin> Foobar'
+# echo '10::0::u::<Colin> Foobar' | fortune 
 #  Comment: This will return:
 #   <Colin> Foobar
 #   %
 #
 
-BEGIN{FS="::";}
 {print $4"\n%";}

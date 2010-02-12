@@ -17,6 +17,6 @@
 # Comment: The source of setqf is an example of how lockq is used in a script.
 
 while [ -e $qlockfile ]
-do env sleep .05s
+do /bin/true
 done
 touch $qlockfile
