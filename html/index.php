@@ -30,10 +30,16 @@ switch ($_SERVER['QUERY_STRING']){
 	case 'about': include('about.html');break;
 	case 'submit': include('submit.php');break; 
 	case 'new': shell_exec('. ./config; tail -15 <$qfile');break;
-	case 'random': break;
+	case 'random': 
+		for ($i = 0; $i < 50; $i++){
+			shell_exec('./randq | outq/html');
+		}
 	case 'random1': break;
+		for ($i = 0; $i < 50; $i++){
+			shell_exec('./randq1 | outq/html');
+		}
 	case 'top': break;
-	default: shell_exec(". ./config; egrep '^".$_SERVER['QUERY_STRING']."'".' <$qfile | outq/html');
+	default: shell_exec(". ./config; egrep '^".$_SERVER['QUERY_STRING'].":'".' <$qfile | outq/html');
 }
 ?>
 </div>
