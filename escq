@@ -8,7 +8,7 @@
 # echo '[literal form of quote]' | escq
 # cat [file containing quote] | escq
 
-# Replace '\\' with '\\\\'
+# Replace '\' with '\\'
 s_\\_\\\\_g
 # Replace ':' with '\\:'
 s_:_\\:_g
