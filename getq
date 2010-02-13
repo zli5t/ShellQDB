@@ -1,10 +1,7 @@
 #!/bin/sh
 
 # NOTES
-# getq (get quote): return a specified range of quotes, with metadata
-# Accepts at least one argument:
-#  (any numerical argument): id of first quote in range, inclusive
-#  (any numerical argument): id of last quote in range, inclusive
+# getq (get quote): return a specified range of quotes, with metadata.
 #
 # USAGE
 # getq [min quote id] [max quote id]

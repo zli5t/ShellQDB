@@ -1,7 +1,7 @@
 #!/bin/sed -rf
 
 # NOTES
-# unescqdbs (unescape quote): convert the rqms sanitized quotes (from a rqms
+# unescqdbs (unescape quote): convert the QdbS sanitized quotes (from a QdbS
 # type database), then output it to standard output.  Accepts one argument (the
 # sanitized body of the quote), but you should use this with pipes
 # (see USAGE->Example(s)).
@@ -9,9 +9,8 @@
 # contents of the quotes file (see USAGE of addq)
 #
 # USAGE
-# unescrqms [sanitized form of quote]
-# Example(s):
-# Works just like unescq, but replaces different things.
+# echo '[sanitized form of quote(s)]' | unescqdbs
+# cat [file with unsanitized form of quote(s)] | unescqdbs
 
 # Replace '&amp;' with '&'
 s_&amp;_\&_g

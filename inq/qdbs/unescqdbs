@@ -9,9 +9,8 @@
 # contents of the quotes file (see USAGE of addq)
 #
 # USAGE
-# unescqdbs [sanitized form of quote]
-# Example(s):
-# Works just like unescq, but replaces different things.
+# echo '[sanitized form of quote(s)]' | unescqdbs
+# cat [file with unsanitized form of quote(s)] | unescqdbs
 
 # Replace '&amp;' with '&'
 s_&amp;_\&_g

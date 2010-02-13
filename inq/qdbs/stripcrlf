@@ -5,8 +5,7 @@
 # Use it in a pipeline, or something.
 #
 # USAGE
-# stripcrlf [file]
-# Example(s):
-# stripcrlf file
+# echo '[literal form of quote(s)]' | stripcrlf
+# cat [file with quote(s)] | stripcrlf
 
 tr -d '\r'

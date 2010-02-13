@@ -1,20 +1,8 @@
 #!/bin/sh
 
 # NOTES
-# lockq (lock quote): This waits until any preexisting lock file is gone, and
-# then creates its own.  Including this in a script puts a lock on the quotes
-# file, ensuring sequential (and not simultaneous) writing to quotesfile data.
-# How does it queue tasks?  Operation (Op) A is called, and a lockfile is made.
-# Op B is called before Op A finishes.  Op A finishes and removes its lockfile
-# by calling on the ulockq script.  Now Op B can make its lockfile and proceed
-# to run.  lockq is meant to be used in a script with ulockq.
-#
-# USAGE
-# . ./lockq
-# modify quotes or call on a script or do something else
-# . ./ulockq
-# Example(s):
-# Comment: The source of setqf is an example of how lockq is used in a script.
+# lockq (lock quote): lockq puts files that modify the quote db into a queue to
+# avoid collisions/overwriting. It's meant to be used along with ulockq.
 
 while [ -e $qlockfile ]
 do /bin/true

@@ -9,10 +9,6 @@
 #
 # USAGE
 # setqscore [quote id] [option]
-# Example(s):
-# setqscore 1 up
-# setqscore 2 down
-# setqscore 4 9001
 
 . ./config
 . ./lockq

@@ -2,18 +2,10 @@
 
 # NOTES
 # setqf (set quote flag): set the third flag in the quote file.  This flag can
-# have any value, but it is meant for 3 possible values:
-#  u (unapproved): quotes that have just been submitted; they will not be
-#   visible anywhere until an admin changes the flag to "a".  Admins can
-#   basically approve a quote (with "a") or unapprove it (with "h").
-#  a (approved): normal quotes; they will be shown.
-#  h (hidden): quotes that have been deleted; they will not be visible anywhere.
-#   Deleted quotes will always exist, so every quote has a unique index number.
+# have any value, but it is meant for 3 possible values: u, a, and h
 #
 # USAGE
 # setqf [quote id] [flag]
-# Example(s):
-# setqf 5 a
 
 . ./config
 . ./lockq

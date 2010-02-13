@@ -8,20 +8,8 @@
 # contents of the quotes file (see USAGE of addq)
 #
 # USAGE
-# unescq [sanitized form of quote]
-# Example(s):
-# echo '<lietk12> so this guy says "foo\\nbar"\n<skr> foobar' | unescq
-#  Comment: The two above lines are one command.  The output of this command is:
-#   <lietk12> so this guy says "foo\nbar"
-#   <skr> foobar
-#  Obviously, this should be piped into addq (see the USAGE of addq)
-# cat thisFileContainsOneQuote | unescq
-#  Comment: the output of this command is:
-#   <lietk12> so this guy says "foo\\nbar"\n<skr> foobar
-#  The command "cat thisFileContainsOneQuote" returns:
-#   <lietk12> so this guy says "foo\nbar"
-#   <skr> foobar
-# getq 5 | unescq
+# echo '[sanitized form of quote]' | unescq
+# cat [file with sanitized form of quote] | unescq
 
 # Replace "\\n" with "\n"
 s_[^\]\\n_\n_g

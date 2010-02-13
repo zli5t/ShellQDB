@@ -1,6 +1,11 @@
 #!/bin/sh
-# This grab everything on stdin, and for all lines between each '%', add the
-# lines to the quotesfile.
+
+# NOTES
+# fortune: This grab everything on stdin, and for all lines between each '%',
+# add the lines to the quotesfile.
+#
+# USAGE
+# cat [fortune file] | inq/fortunes
 
 while read LINE; do
 	if [ "$LINE" = '%' ]; then
