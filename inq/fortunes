@@ -1,0 +1,16 @@
+#!/bin/sh
+# This grab everything on stdin, and for all lines between each '%', add the
+# lines to the quotesfile.
+
+while read LINE; do
+	if [ "$LINE" = '%' ]; then
+		echo "$QUOTE" | ../escq | ../addq
+		QUOTE=""
+	else
+		if [ "$QUOTE" = "" ]; then
+			QUOTE="$LINE"
+		else
+			QUOTE="${QUOTE}\n${LINE}"
+		fi
+	fi
+done
