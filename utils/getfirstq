@@ -1,0 +1,9 @@
+#!/bin/sh
+
+while read LINE; do
+	if [ "$LINE" = '%' ]; then
+		break
+	else
+		echo $LINE
+	fi
+done
