@@ -4,7 +4,7 @@
 
 while read LINE; do
 	if [ "$LINE" = '%' ]; then
-		echo "$QUOTE" | ../escq | ../addq
+		echo "$QUOTE" | escq | addq
 		QUOTE=""
 	else
 		if [ "$QUOTE" = "" ]; then
