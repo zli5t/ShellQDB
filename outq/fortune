@@ -1,4 +1,4 @@
-#!/usr/bin/awk -F:: -f
+#!/usr/bin/awk -f
  
 # NOTES
 # fortune: convert all quotes from input to fortune format.  Meant to be used
@@ -14,5 +14,5 @@
 #   <Colin> Foobar
 #   %
 #
- 
+BEGIN{FS="::";}
 {print $4"\n%";}
