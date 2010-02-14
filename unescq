@@ -11,9 +11,9 @@
 # echo '[sanitized form of quote]' | unescq
 # cat [file with sanitized form of quote] | unescq
 
-# Replace "\\n" with "\n"
+# Replace "\n" with a newline
 s_[^\]\\n_\n_g
 # Replace "\\:" with ":"
 s_\\:_:_g
-# Replace "\\\\" with "\\"
+# Replace "\\" with "\"
 s_\\\\_\\_g

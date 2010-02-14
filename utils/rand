@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Get standard input and store it as a variable
+while read LINE; do
+	if [ "$INPUT" = "" ]; then
+		INPUT="$LINE"
+	else
+		INPUT="${INPUT} \n${LINE}"
+	fi
+done
+
+# Count how many lines are in stdin
+LINECOUNT=`echo -e "$INPUT" | wc -l`
+# Determine how many quotes to randomly select
+MAXCOUNT=$1
+# Reseed bash's pseudo-RNG with stuff from /dev/random; reseeding in the while loop makes the script slow
+RANDOM=$(head -1 /dev/urandom | od -N 1 | awk '{ print $2 }')
+
+COUNTER=0
+while [ "$COUNTER" -lt "$MAXCOUNT" ]; do
+	COUNTER=$(($COUNTER + 1))
+	LINENUMBER=$(($RANDOM % $LINECOUNT))
+	echo -e "$INPUT" | tr -d " " | sed $LINENUMBER'q;d'
+done
