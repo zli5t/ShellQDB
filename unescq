@@ -4,8 +4,6 @@
 # unescq (unescape quote): convert previously sanitized input into literal form,
 # then output it to standard output.  Accepts one argument (the sanitized body
 # of the quote), but you should use this with pipes (see USAGE->Example(s)).
-# Meant to be used where the output is piped from retrieval of some part of the
-# contents of the quotes file (see USAGE of addq)
 #
 # USAGE
 # echo '[sanitized form of quote]' | unescq
@@ -13,7 +11,7 @@
 
 # Replace "\n" with a newline
 s_[^\]\\n_\n_g
-# Replace "\\:" with ":"
+# Replace "\:" with ":"
 s_\\:_:_g
 # Replace "\\" with "\"
 s_\\\\_\\_g
