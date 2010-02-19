@@ -8,8 +8,8 @@ LINECOUNT=`echo "$INPUT" | wc -l`
 # Determine how many quotes to randomly select
 MAXCOUNT=$1
 
-for (( i=1; i<=$MAXCOUNT; i++ ))
+for i in `seq $MAXCOUNT`
 do
-	LINENUMBER=$(($RANDOM % $LINECOUNT))
+	LINENUMBER=`expr $RANDOM % $LINECOUNT`
 	echo "$INPUT" | sed $LINENUMBER'q;d' # using 'q;d' is equivalent to using 'p', but faster
 done
