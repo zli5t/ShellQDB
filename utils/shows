@@ -4,5 +4,4 @@
 # shows (show based on score): shows all quotes in stdin which match an awk
 # comparison condition (http://www.savs.hcc.edu.tw/~chuavv//awk/nawk_48.html)
 
-#awk -F:: '$3 '$1' "'$2'" {print;}'
 awk -F:: '$2 '$1' "'$2'" {print;}'
