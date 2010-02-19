@@ -53,7 +53,8 @@ that happens to anything you care about.
 Documentation
 --------------------------------------------------------------------------------
 
-Extensive documentation can be found in the various scripts.  Miscellaneous
+Extensive documentation can be found on the wiki; the various scripts also have
+descriptions of what they do and how they're typically used.  Miscellaneous
 documentation not found elsewhere is provided below.
 
 
@@ -81,9 +82,6 @@ better to over-comment than to under-comment.
 Notes on Files/Folders
 --------------------------------------------------------------------------------
 
-`lockq` (lock quote) and `unlockq` (unlock quote): provide a layer for any
-operation dealing with the quote file, to ensure that no data's overwritten.
-
 `outq` (output/export quote): a directory of formatters for various formats
 (e.g. html).  Run scripts by referring to them in terms of the directory of
 config (e.g. "outq/fortune/makefortune").
@@ -91,4 +89,11 @@ config (e.g. "outq/fortune/makefortune").
 `inq` (import quote): a directory of tools for importing quotes from various
 other formats.  Look at the READMEs in the corresponding directories for usage.
 
+`utils` (utilities): a directory of miscellaneous tools; some filters and
+scripts for automating certain tasks are here.
+
+`html`: the web frontend.
+
 `quotes`: the default file for holding quotes.
+
+`config`: a list of paths for various files.  The defaults are good enough.
