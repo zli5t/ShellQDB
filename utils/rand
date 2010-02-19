@@ -11,6 +11,5 @@ MAXCOUNT=$1
 for i in `seq $MAXCOUNT`
 do
 	LINENUMBER=`expr $RANDOM % $LINECOUNT + 1`
-	echo $LINENUMBER
 	echo "$INPUT" | sed $LINENUMBER'q;d' # using 'q;d' is equivalent to using 'p', but faster
 done
