@@ -12,8 +12,3 @@ qfile=./quotes
 # queueing operations that modify the quotes file.
 # Default: ./quotes.lock
 qlockfile=./quotes.lock
-
-# qtempfile is the path to the file that is made for changing the quotes file.
-# All changes to the quotes file first go through the quotes temp file.
-# Default: ./quotes.temp
-qtempfile=./quotes.temp
