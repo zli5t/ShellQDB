@@ -11,7 +11,7 @@
 . ./lockq
 
 # First find the line with the correct id; replace [id]::[score]::[oldflag]::[quote] with [id]::[score]::[newflag]::[quote]
-sed -r -i '/^'$1'::/ s/([0-9]+::)([0-9]+::)(.*)(::.*)/\1\2'$2'\4/' $qfile
+sed -r -i '/^'$1'::/ s/([0-9]+::)([0-9]*::)(.*)(::.*)/\1\2'$2'\4/' $qfile
 
 . ./ulockq
 
