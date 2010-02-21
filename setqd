@@ -1,0 +1,46 @@
+#!/bin/sh
+
+# NOTES
+# setqd (set quote data): modify a quote entry's data
+# Has 3 functions:
+#  `setqd f` will set the flag of the quote based on the next argument
+#  `setqd s` will set the score of the quote based on the next argument
+#
+# USAGE
+# setqd f [quote id] [flag]
+# setqd s [quote id] [score value modifier]
+# setqd q [quote id]
+
+. ./config
+. ./lockq
+
+case $1 in
+	f)
+		sed -r -i '/^'$2'::/ s/([0-9]+::)([0-9]*::)(.*)(::.*)/\1\2'$3'\4/' $qfile
+		;;
+	s)
+		CURRENTSCORE=`awk 'BEGIN{FS="::"}{if($1=='$2')print $2;}' <$qfile`
+
+		if [ "$3" = "add" ]; then
+			NEWSCORE=`expr $CURRENTSCORE + $4`
+		elif [ "$3" = "subtract" ] ; then
+			NEWSCORE=`expr $CURRENTSCORE - $4`
+		else
+			NEWSCORE="$3"
+		fi
+
+		# First find the line with the correct id; replace [id]::[oldscore, possibly negative]::[flag]::[quote] with [id]::[newscore]::[flag]::[quote]
+		sed -r -i '/^'$2'::/ s/([0-9]+::)(.[0-9]*)(::.*)(::.*)/\1'$NEWSCORE'\3\4/' $qfile
+		;;
+	q)
+		# We only accept one quote entry per setqd command, so we only read one line
+		read INPUT
+		
+		# First find the line with the correct id; replace [id]::[score]::[flag]::[oldquote] with [id]::[score]::[flag]::[newquote]
+		sed -r -i '/^'$2'::/ s/([0-9]+::)([0-9]*::)(.*::)(.*)/\1\2\3'"$INPUT"'/' $qfile
+		;;
+	*)
+		echo "Error: Invalid  function specification."
+esac
+	
+. ./ulockq
