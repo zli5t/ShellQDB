@@ -1,18 +1,7 @@
 #!/bin/sh
 
-# Get standard input and store it as a variable
-INPUT=`cat`
-
-# Count how many lines are in stdin
-LINECOUNT=`printf "%s\n" "$INPUT" | wc -l`
-# Determine how many quotes to randomly select
-MAXCOUNT=$1
-# Generate a pseudo-random number
-RANDOM=`(ps ax && date) | sum | cut -c1-5`
-
-for i in `seq $MAXCOUNT`
-do
-	RANDOM=`echo $RANDOM | sum | cut -c1-5`
-	LINENUMBER=`expr $RANDOM % $LINECOUNT + 1`
-	printf "%s\n" "$INPUT" | sed $LINENUMBER'q;d' # using 'q;d' is equivalent to using 'p', but faster
-done
+if [ "$1" != "" ]; then
+	sort -R | head -${1}
+else
+	sort -R
+fi
