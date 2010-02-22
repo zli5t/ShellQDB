@@ -1,7 +1,28 @@
 #!/bin/sh
 
 # NOTES
-# shows (show based on score): shows all quotes in stdin which match an awk
-# comparison condition (http://www.savs.hcc.edu.tw/~chuavv//awk/nawk_48.html)
+# shows (show based on score): shows all quotes in stdin which match a bash
+# comparison condition
 
-awk -F:: '$2 '$1' "'$2'" {print;}'
+case $1 in
+	gt)
+		COMPARISON='>'
+		;;
+	lt)
+		COMPARISON='<'
+		;;
+	ge)
+		COMPARISON='>='
+		;;
+	le)
+		COMPARISON='<='
+		;;
+	eq)
+		COMPARISON='=='
+		;;
+	ne)
+		COMPARISON='!='
+		;;
+esac
+
+awk -F:: '$2 '"$COMPARISON"' '"$2"' {print;}'
