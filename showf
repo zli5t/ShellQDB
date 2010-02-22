@@ -1,0 +1,33 @@
+#!/bin/sh
+
+case $1 in
+	f)
+		awk -F:: '$3 == "'$2'" {print;}'
+		;;
+	s)
+		case $2 in
+			gt)
+				COMPARISON='>'
+				;;
+			lt)
+				COMPARISON='<'
+				;;
+			ge)
+				COMPARISON='>='
+				;;
+			le)
+				COMPARISON='<='
+				;;
+			eq)
+				COMPARISON='=='
+				;;
+			ne)
+				COMPARISON='!='
+				;;
+		esac
+
+		awk -F:: '$2 '"$COMPARISON"' '"$2"' {print;}'
+		;;
+	*)
+		echo "Error: Invalid function specification."
+esac
