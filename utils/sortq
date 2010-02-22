@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# Note: specify based on what you want first (e.g. if you want to sort highest
+# first and subsort newest first, use "sortq h n").  If you sort highest/lowest
+# but don't specify a subsort order, sortq will subsort oldest first.
+
+if [ "$1" = "o" ] || [ "$1" = "n" ]; then
+	if [ "$1" = "n" ]; then
+		sort -t : -k 1,1nr
+	else
+		# Note: This is useful if you got n random quotes and wanted to sort them by age.
+		sort -t : -k 1,1n
+	fi
+	# Because there are no duplicate id numbers, there is nothing to subsort.  Thus, we are finished.
+elif [ "$1" = "h" ] || [ "$1" = "l" ]; then
+	if [ "$1" = "h" ]; then
+		HLORDER="nr"
+	else
+		HLORDER="n"
+	fi
+	if [ "$2" = "n" ]; then
+		NOORDER="nr"
+	elif [ "$2" = "o" ]; then
+		NOORDER="n"
+	elif [ "$2" = "R" ]; then
+		NOORDER="R"
+	elif [ "$2" = "" ]; then
+		NOORDER="n"
+	else
+		echo "Error: Invalid subsort specification"
+		exit
+	fi
+	sort -t : -k 2,2${HLORDER} -k1,1${NOORDER}
+else
+	echo "Error: Invalid sort specification"
+fi
