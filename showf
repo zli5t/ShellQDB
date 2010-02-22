@@ -2,7 +2,11 @@
 
 case $1 in
 	f)
-		awk -F:: '$3 == "'$2'" {print;}'
+		if [ "$2" != "" ]; then
+			awk -F:: '$3 == "'$2'" {print;}'
+		else
+			cat
+		fi
 		;;
 	s)
 		case $2 in
@@ -24,10 +28,17 @@ case $1 in
 			ne)
 				COMPARISON='!='
 				;;
+			*)
+				;;
 		esac
 
-		awk -F:: '$2 '"$COMPARISON"' '"$2"' {print;}'
+		if [ "$3" != "" ]; then
+			awk -F:: '$2 '"$COMPARISON"' '"$3"' {print;}'
+		else
+			cat
+		fi
 		;;
 	*)
 		echo "Error: Invalid function specification."
+		;;
 esac

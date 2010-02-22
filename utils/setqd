@@ -41,6 +41,7 @@ case $1 in
 		;;
 	*)
 		echo "Error: Invalid  function specification."
+		;;
 esac
 	
 . ./ulockq
