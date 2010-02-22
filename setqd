@@ -16,10 +16,10 @@
 
 case $1 in
 	f)
-		sed -r -i '/^'$2'::/ s/([0-9]+::)([0-9]*::)(.*)(::.*)/\1\2'$3'\4/' $qfile
+		sed -r -i '/^'$2':/ s/([0-9]+:)(.[0-9]*:)(.*)(:.*)/\1\2'$3'\4/' $qfile
 		;;
 	s)
-		CURRENTSCORE=`awk 'BEGIN{FS="::"}{if($1=='$2')print $2;}' <$qfile`
+		CURRENTSCORE=`awk 'BEGIN{FS=":"}{if($1=='$2')print $2;}' <$qfile`
 
 		if [ "$3" = "add" ]; then
 			NEWSCORE=`expr $CURRENTSCORE + $4`
@@ -29,15 +29,15 @@ case $1 in
 			NEWSCORE="$3"
 		fi
 
-		# First find the line with the correct id; replace [id]::[oldscore, possibly negative]::[flag]::[quote] with [id]::[newscore]::[flag]::[quote]
-		sed -r -i '/^'$2'::/ s/([0-9]+::)(.[0-9]*)(::.*)(::.*)/\1'$NEWSCORE'\3\4/' $qfile
+		# First find the line with the correct id; replace [id]:[oldscore, possibly negative]:[flag]:[quote] with [id]:[newscore]:[flag]:[quote]
+		sed -r -i '/^'$2':/ s/([0-9]+:)(.[0-9]*)(:.*)(:.*)/\1'$NEWSCORE'\3\4/' $qfile
 		;;
 	q)
 		# We only accept one quote entry per setqd command, so we only read one line
 		read INPUT
 		
-		# First find the line with the correct id; replace [id]::[score]::[flag]::[oldquote] with [id]::[score]::[flag]::[newquote]
-		sed -r -i '/^'$2'::/ s/([0-9]+::)(.[0-9]*::)(.*::)(.*)/\1\2\3'"$INPUT"'/' $qfile
+		# First find the line with the correct id; replace [id]:[score]:[flag]:[oldquote] with [id]:[score]:[flag]:[newquote]
+		sed -r -i '/^'$2':/ s/([0-9]+:)(.[0-9]*:)(.*:)(.*)/\1\2\3'"$INPUT"'/' $qfile
 		;;
 	*)
 		echo "Error: Invalid  function specification."

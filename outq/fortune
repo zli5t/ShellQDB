@@ -8,11 +8,6 @@
 #
 # USAGE
 # echo 'quotes to be converted' | outq/fortune/fortune
-# Example(s):
-# echo '10::0::u::<Colin> Foobar' | fortune 
-#  Comment: This will return:
-#   <Colin> Foobar
-#   %
-#
-BEGIN{FS="::";}
+
+BEGIN{FS=":";}
 {print $4"\n%";}

@@ -3,7 +3,7 @@
 case $1 in
 	f)
 		if [ "$2" != "" ]; then
-			awk -F:: '$3 == "'$2'" {print;}'
+			awk -F: '$3 == "'$2'" {print;}'
 		else
 			cat
 		fi
@@ -33,7 +33,7 @@ case $1 in
 		esac
 
 		if [ "$3" != "" ]; then
-			awk -F:: '$2 '"$COMPARISON"' '"$3"' {print;}'
+			awk -F: '$2 '"$COMPARISON"' '"$3"' {print;}'
 		else
 			cat
 		fi

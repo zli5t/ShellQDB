@@ -1,5 +1,5 @@
 #!/bin/sh
-awk -F:: '
+awk -F: '
 $3=="a"{
 print "<div class=\"quote\">"
 print "<span class=\"qid\">"$1"</span>"

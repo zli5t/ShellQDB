@@ -24,23 +24,23 @@
 case $# in
 	0)
 		# Return all contents of the quotes file
-		sed -n /^::/p <$qfile;
+		sed -n /^:/p <$qfile;
 		;;
 	1)
 		# Return the quote specified by the argument
-		sed -n /^$1::/p <$qfile;
+		sed -n /^$1:/p <$qfile;
 		;;
 	2)
 		# Return the range of quotes specified by the min and max, inclusive
 		if [ $1 -eq $2 ]; then
 			# Return the quote specified by the two arguments (which are equal)
-			sed -n /^$1::/p <$qfile;
+			sed -n /^$1:/p <$qfile;
 		elif [ $1 -gt $2 ]; then
 			# If the first argument is the larger of the two arguments, use it as a max
-			sed -n /^$2::/,/^$1::/p <$qfile;
+			sed -n /^$2:/,/^$1:/p <$qfile;
 		else
 			# If the second argument is the larger of the two arguments, use it as a max
-			sed -n /^$1::/,/^$2::/p <$qfile;
+			sed -n /^$1:/,/^$2:/p <$qfile;
 		fi
 		;;
 	*)

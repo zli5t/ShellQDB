@@ -11,7 +11,7 @@
 
 # Replace "\n" with a newline
 s_[^\]\\n_\n_g
-# Replace "\:" with ":"
-s_\\:_:_g
+# Replace "\c" with ":"
+s_[^\]\\c_:_g
 # Replace "\\" with "\"
 s_\\\\_\\_g
