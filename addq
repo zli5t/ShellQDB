@@ -13,7 +13,8 @@
 . ./lockq
 
 # Determine id of the last quote, and add one to it for the quote to be added
-ID=`tail -1 quotes | awk 'BEGIN{FS=":";}{print $1+1}'`
+ID=`tail -1 quotes | cut -d : -f 1`
+ID=`expr $ID + 1`
 
 # Replace the input quote with something of the form "$ID:0:u:input", where
 # "$ID" is the id of the new quote and "input" is the input of the scrupt.  Then
