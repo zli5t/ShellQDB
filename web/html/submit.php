@@ -1,7 +1,10 @@
 <div id="submit">
 <?
-if ($_POST["quote"]){
-	`cd $db; echo '$_POST['quote']' | ./escq | ./addq`;
+if ($_POST['quote']){
+	$q = escapeshellcmd($_POST['quote']);
+	shell_exec("cd $db; echo $q | ./escq | ./addq");
+	print `cd $db; echo $q | ./escq `;
+	`echo akjfg >file`;
 ?>
 <p>Your quote has been successfully submitted! Thanks!</p>
 <?
