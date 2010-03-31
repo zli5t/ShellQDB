@@ -1,14 +1,14 @@
-#!/bin/sh
+#!/bin/bash
 
-case $1 in
-	f)
-		if [ "$2" != "" ]; then
-			awk -F: '$3 == "'$2'" {print;}'
-		else
-			cat
-		fi
+TEXT=`cat`
+
+until [ -z "$1" ]; do
+	case $1 in
+	-f)
+		TEXT=`printf "%s" "$TEXT" | awk -F: '$3 == "'$2'" {print;}'`
+		shift 2
 		;;
-	s)
+	-s)
 		case $2 in
 			gt)
 				COMPARISON='>'
@@ -32,13 +32,14 @@ case $1 in
 				;;
 		esac
 
-		if [ "$3" != "" ]; then
-			awk -F: '$2 '"$COMPARISON"' '"$3"' {print;}'
-		else
-			cat
-		fi
+		TEXT=`printf "%s" "$TEXT" | awk -F: '$2 '"$COMPARISON"' '"$3"' {print;}'`
+		shift 3
 		;;
 	*)
 		echo "Error: Invalid function specification."
+		break
 		;;
-esac
+	esac
+done
+
+printf "%s\n" "$TEXT"

@@ -4,7 +4,7 @@
 # first and subsort newest first, use "sortq h n").  If you sort highest/lowest
 # but don't specify a subsort order, sortq will subsort oldest first.
 
-if [ "$1" = "o" ] || [ "$1" = "n" ]; then
+if [ "$1" = "o" -o "$1" = "n" ]; then
 	if [ "$1" = "n" ]; then
 		sort -t : -k 1,1nr
 	else
@@ -12,7 +12,7 @@ if [ "$1" = "o" ] || [ "$1" = "n" ]; then
 		sort -t : -k 1,1n
 	fi
 	# Because there are no duplicate id numbers, there is nothing to subsort.  Thus, we are finished.
-elif [ "$1" = "h" ] || [ "$1" = "l" ]; then
+elif [ "$1" = "h" -o "$1" = "l" ]; then
 	if [ "$1" = "h" ]; then
 		HLORDER="nr"
 	else
